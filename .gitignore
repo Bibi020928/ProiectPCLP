@@ -25,6 +25,24 @@
 *.log
 *.sql
 *.sqlite
+*.jpg
+*.gif
+*.png
+*.svg
+*.ico
+*.wmv
+*.mpg
+*.mpeg
+*.mp4
+*.mov
+*.flv
+*.avi
+*.ogv
+*.ogg
+*.webm
+*.wav
+*.mp3
+*.wma
 
 # OS generated files #
 ######################
@@ -35,3 +53,4 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
