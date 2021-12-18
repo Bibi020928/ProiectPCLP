@@ -1,2 +1,4 @@
 # ProiectPCLP
-Aici se scriu pasii detaliat care duc la instalarea / folosirea aplicatiei
+Acest fișier conține pașii de instalare a aplicației pentru rularea jocului.
+
+acisifasc sadr 
