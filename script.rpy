@@ -1,4 +1,4 @@
-# AICI AM DEFINIT CARACTERELE , CU OPTIUNEA "define"
+﻿# AICI AM DEFINIT CARACTERELE , CU OPTIUNEA "define"
 define b = Character("Gică", color = "#FFFE00")
 define p2 = Character("Ion", color = "#0064E9")
 define p3 = Character("Mircea", color = "#0064E9")
@@ -9,6 +9,7 @@ define e = Character("Profesor")
 define nec = Character("???")
 define bus = Character("Domnu' șofer", color="#FFFFFF")
 define vtu = Character("[v] și [tu]")
+
 # AICI FOLOSIM ACEASTĂ OPTIUNE PENTRU A MICSORA O POZA A UNUI CARACTER
 init -10 python:
     def embiggen(s):
@@ -24,6 +25,7 @@ image sumi open small = "small:sumi open"
 label start:
     # AICI AM DEFINIT O VARIABILA, CARE O SA O FOLOSIM PENTRU UN if
     default alegere = 0
+    default muzica = 0
 # ACEASTA OPTIUNE ESTE FOLOSITA PENTRU A DA UN NUME CARACTERULUI PRINCIUAL, ADICA "tu"
     stop music
     $nume = renpy.input("Cum te numesti?")
@@ -32,6 +34,12 @@ label start:
 
     scene black
 
+    menu:
+        "Dorești să foloseși versiunea jocului cu 'câteva' melodii Românești?":
+             $muzica = 0
+
+        "Dorești să nu apară melodii Românești în joc?":
+            $muzica = 1
 
 
 
@@ -40,7 +48,7 @@ label start:
     "Am hotărât împreună cu câțiva prieteni să mergem într-o tabară despre supraviețuitul în pădure."
 
     scene statie1
-    play music  "Hokabi.mp3"
+    play music  "audio/Hokabi.mp3"
 
     tu "Hai mă mai repede odata, că pierdem autocarul."
 
@@ -56,7 +64,7 @@ label start:
 
     "Am ajuns noi la stația de unde trebuia să luăm autocarul."
 
-    play music "Caged Heart.mp3"
+    play music "audio/Caged Heart.mp3"
     "Dar când să mai urc și eu șoferul a închis ușile și a spus că nu mai este loc și pentru mine."
 
     "Așa că am avut de ales."
@@ -84,9 +92,15 @@ label start:
         tu "Ai cum să mă duci și pe mine cu mașina până undeva?"
 
         b "Cum să nu, doar nu ești tu fratele meu."
+        if muzica==0:
 
-        play music "coolio.mp3"
-        #play music "Artileria.mp3"
+            play music "audio/Artileria.mp3"
+
+        else:
+            play music "audio/coolio.mp3"
+
+
+
         scene golf4gica
 
         "Peste 15 minute apare Gică cu un Golf4 negru cu spoiler."
@@ -101,8 +115,11 @@ label start:
         scene black
 
         "Peste vreo 2 ore mă trezesc și observ că Gică a ales să folosească o scurtătură, fără să se mai folosească de Waze."
-        play music ["eminem.mp3"] fadeout 1.0 fadein 1.0
-        #play music ["Jonny Nebunu.mp3"] fadeout 1.0 fadein 1.0
+        if muzica == 1:
+            play music ["audio/eminem.mp3"] fadeout 1.0 fadein 1.0
+
+        else:
+            play music ["audio/Johnny Nebunu.mp3"] fadeout 1.0 fadein 1.0
         scene padure with fade
 
         tu "Ce faci mă, unde am ajuns?"
@@ -172,11 +189,12 @@ label start:
 
 
     label tabara:
+        ##INTRAREA IN TABARA
 
         "Acum am rămas aici singur și nu știu ce sa mai fac."
 
         "Așa că am hotărât să caut să vorbesc cu cineva, ca să nu rămân pe timpul nopții singur în sălbăticie."
-        play music "Afternoon.mp3" fadein 1.0
+        play music "audio/Afternoon.mp3" fadein 1.0
         scene tabara
         "Cum intru pe porțile taberei, îmi ies în cale niște cabane micuțe, roșii."
         "Vazându-le, stăteam să mă gândeam:"
@@ -232,7 +250,7 @@ label start:
         tu "Mulțumesc, mulțumesc. O să am grijă ce fac pe aici."
 
         scene black
-        play music ["Daylight.mp3"] fadein 1.0 fadeout 1.0
+        play music ["audio/Daylight.mp3"] fadein 1.0 fadeout 1.0
         "După ce am reușit să răman până la urmă, profesorul a vrut să îmi arate cum să mă descurc aici."
         "M-a plimbat prin toată tabăra ca să îmi arete diferite locații."
         scene tabara
@@ -250,7 +268,7 @@ label start:
         e "Nicio problemă, ne mai vedem."
 
         scene black
-        play music ["AhEhIOhYou.mp3"] fadein 1.0 fadeout 1.0
+        play music ["audio/AhEhIOhYou.mp3"] fadein 1.0 fadeout 1.0
         "Cum mă uitam eu la profesor cum pleacă, încep să ma uit puțin prin jur."
 
         "Și încep să îmi dau seama de ceva."
@@ -262,7 +280,7 @@ label start:
         "Nu cred eu că o să mă înțeleg eu cu fetele de aici."
         "Un băiat într-o tabără de fete."
         "IM-PO-SI-BIL"
-        play music ["Afternoon.mp3"] fadeout 1.0 fadein 1.0
+        play music ["audio/Afternoon.mp3"] fadeout 1.0 fadein 1.0
         scene cantina
         "Cum stăteam și eram pierdut în gandurile mele, o fată hotărăște să ma deranjeze."
 
@@ -307,7 +325,7 @@ label start:
         v "Așteaptă aici și îți aduc eu ceva de la cantină."
 
         scene black
-        play music "AhEhIOhYou.mp3"
+        play music "audio/AhEhIOhYou.mp3"
         "Cât timp stau și o aștept eu pe [v], am început să ma uit prin jur."
         "Și observ un lucru de care nu am bagat de seama."
         "Tabăra aceasta este plină toată de fete de vârsta mea."
@@ -317,7 +335,7 @@ label start:
         "Dar cu cât stau și mă gandesc mai bine, cu atât cred că am să dorm eu în padure."
         "Nu are cum să mă lase să răman aici."
         "IM-PO-SI-BIL"
-        play music ["Afternoon.mp3"] fadeout 1.0 fadein 1.0
+        play music ["audio/Afternoon.mp3"] fadeout 1.0 fadein 1.0
         "Între timp, [v] se întoarce de la cantina, cu ceva ce ar părea a fii pireu."
 
         scene cantina
@@ -334,7 +352,7 @@ label start:
     return
     label roxana:
         "Aceasta își îndreaptă degetul către mine și întreabă."
-        play music ["Out of the Loop.mp3"]
+        play music ["audio/Out of the Loop.mp3"]
         show miu pout1 with dissolve
 
         nec "Cine ești tu și ce cauți aici?!?"
@@ -378,7 +396,7 @@ label start:
             tu "Nicio problemă, o înțeleg."
             tu "Și eu aș reacționa așa dacă aș fii în locul ei."
             e "Dacă totul este bine, ok."
-            play music ["Afternoon.mp3"] fadeout 1.0 fadein 1.0
+            play music ["audio/Afternoon.mp3"] fadeout 1.0 fadein 1.0
             e "Acum vino cu mine să ți-o prezint pe noua ta colega de cameră."
             scene black
 
@@ -458,7 +476,7 @@ label start:
             f1 "Nu ai să scapi așa ușor."
             hide noah_smile
             "După care eu cu [v] hotărâm să intrăm în cabanuță să ne culcam."
-            play music ["Afternoon.mp3"] fadeout 1.0 fadein 1.0
+            play music ["audio/Afternoon.mp3"] fadeout 1.0 fadein 1.0
             jump a_doua_zi
 
 
@@ -517,7 +535,7 @@ label start:
         scene black
         "Am intrat la cantină și l-am întrebat pe bucătar daca are cum să îmi dea niște carne ca să putem să o facem la focul de tabără."
         "Surprins plăcut, bucătarul reușește să ne dea carnea de care avem nevoie."
-        play music "Stride.mp3"
+        play music "audio/Stride.mp3"
         "Mă îndrept eu către focul de tabără, unde mă întâlnesc cu [f1]."
         scene foc
         show miu pout1
@@ -541,7 +559,12 @@ label start:
 
 
         "Am terminat până la urmă cu pregătirile, chiar când să se întunece."
-        play music ["Life Is Life.mp3"] fadein 1.0 fadeout 1.0
+        if muzica == 1:
+            play music ["audio/Life Is Life.mp3"] fadein 1.0 fadeout 1.0
+
+        else:
+            play music ["audio/Formatia Alb si Negru (Laurentiu Popa) - Un trandafir creste la firida mea ( Machedoneasca ).mp3"] fadein 1.0 fadeout 1.0
+
         "Așa că am început să dam drumul la foc, si să îi dăm drumul la petrecere."
         "Toată lumea dansează și se distrează"
         "Până și profesorul se simte bine."
